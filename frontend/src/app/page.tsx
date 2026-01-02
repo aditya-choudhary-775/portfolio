@@ -9,7 +9,7 @@ export default function Home() {
       
       <div className="border h-[87%] rounded-xl mb-4 w-[90%] relative flex divide-x">
         <Sidebar />
-        <div className={cn("h-full flex-1")}>
+        <div className={cn("h-full flex-1", "bg-[radial-gradient(black_1px,_transparent_1px)]")}>
           
         </div>
       </div>

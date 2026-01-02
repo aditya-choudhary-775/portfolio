@@ -8,8 +8,8 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import React, { useState } from "react";
-import { SideBarToggle } from "./icons";
 import { AnimatePresence, motion } from "motion/react";
+import { SidebarToggle } from "./icons";
 
 const COLLAPSED = 90;
 const EXPANDED = 210;
@@ -57,7 +57,7 @@ export const Sidebar = () => {
         onClick={() => setOpen(!open)}
         className={cn("absolute top-[1px] -right-10 m-2 h-7 w-7 cursor-pointer")}
       >
-        <SideBarToggle open={open} className={cn("m-2 h-7 w-7")} />
+        <SidebarToggle open={open} className={cn("m-2 h-7 w-7")} />
       </div>
     </motion.div>
   );
