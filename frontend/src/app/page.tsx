@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
-import { ControlRoom } from "@/pages/control-room";
+import { ControlRoom } from "@/components/control-room";
 import {
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
@@ -12,11 +12,7 @@ export default function Home() {
     <div className="flex h-screen items-center justify-center">
       <div className="relative mb-4 flex h-[87%] w-[90%] divide-x rounded-xl border">
         <Sidebar />
-        <div
-          className={cn(
-            "relative h-full flex-1",
-          )}
-        >
+        <div className={cn("relative h-full flex-1")}>
           <div
             className={cn(
               "absolute h-full w-full",
