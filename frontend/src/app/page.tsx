@@ -1,5 +1,6 @@
 import { Sidebar } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
+import { ControlRoom } from "@/pages/control-room";
 import {
   IconLayoutSidebarLeftCollapse,
   IconLayoutSidebarLeftExpand,
@@ -13,11 +14,19 @@ export default function Home() {
         <Sidebar />
         <div
           className={cn(
-            "h-full flex-1",
-            "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]", "bg-size-[10px_10px]",
-            "mask-x-from-50% mask-y-from-90%"
+            "relative h-full flex-1",
           )}
-        ></div>
+        >
+          <div
+            className={cn(
+              "absolute h-full w-full",
+              "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
+              "bg-size-[10px_10px]",
+              // "mask-y-from-90% mask-x-from-50%",
+            )}
+          />
+          <ControlRoom />
+        </div>
       </div>
     </div>
   );

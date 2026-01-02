@@ -19,6 +19,7 @@ type SidebarItem = {
   icon?: React.ComponentType<{ className?: string }>;
   imageSrc?: string;
   imageAlt?: string;
+  className?: string;
 };
 
 const sidebarItems: SidebarItem[] = [
@@ -26,6 +27,7 @@ const sidebarItems: SidebarItem[] = [
     label: "Control Room",
     imageSrc: "/overview-2.png",
     imageAlt: "Control Room",
+    className: "mt-8"
   },
   { label: "Projects", imageSrc: "/projects.png", imageAlt: "Projects" },
   { label: "Skills", imageSrc: "/skills.png", imageAlt: "Skills" },
@@ -51,12 +53,12 @@ export const Sidebar = () => {
       )}
     >
       {sidebarItems.map((item, index) => (
-        <SidebarItemComponent open={open} key={index} item={item} />
+        <SidebarItemComponent className={item.className || ""} open={open} key={index} item={item} />
       ))}
 
       <div
         onClick={() => setOpen(!open)}
-        className={cn("absolute top-2 -right-10 z-50 h-7 w-7 cursor-pointer")}
+        className={cn("absolute top-2 right-4 z-50 h-7 w-7 cursor-pointer")}
       >
         <SidebarToggle open={open} className={cn("h-7 w-7")} />
       </div>
@@ -67,14 +69,16 @@ export const Sidebar = () => {
 const SidebarItemComponent = ({
   item,
   open,
+  className,
 }: {
   item: SidebarItem;
   open: Boolean;
+  className?: string;
 }) => {
   return (
     <div
       className={cn(
-        "flex cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 p-2 transition-shadow duration-200 hover:bg-gray-100 hover:shadow-xl",
+        "flex cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 p-2 transition-shadow duration-200 hover:bg-gray-100 hover:shadow-xl", className
       )}
     >
       {item.imageSrc ? (
