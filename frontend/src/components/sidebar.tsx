@@ -43,7 +43,7 @@ export const Sidebar = () => {
         width: open ? EXPANDED : COLLAPSED,
       }}
       transition={{
-        duration: 0.3,
+        duration: open ? 0.35 : 0.2,
         ease: "easeInOut",
       }}
       className={cn(
