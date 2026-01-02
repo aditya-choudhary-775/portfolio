@@ -53,11 +53,12 @@ export const Sidebar = () => {
       {sidebarItems.map((item, index) => (
         <SidebarItemComponent open={open} key={index} item={item} />
       ))}
+
       <div
         onClick={() => setOpen(!open)}
-        className={cn("absolute top-[1px] -right-10 m-2 h-7 w-7 cursor-pointer")}
+        className={cn("absolute top-2 -right-10 z-50 h-7 w-7 cursor-pointer")}
       >
-        <SidebarToggle open={open} className={cn("m-2 h-7 w-7")} />
+        <SidebarToggle open={open} className={cn("h-7 w-7")} />
       </div>
     </motion.div>
   );
@@ -109,7 +110,7 @@ const SidebarItemComponent = ({
             transition={{
               duration: open ? 0.35 : 0.2,
             }}
-            className={cn("flex-1 px-2 whitespace-nowrap overflow-hidden")}
+            className={cn("flex-1 overflow-hidden px-2 whitespace-nowrap")}
           >
             {item.label}
           </motion.span>
