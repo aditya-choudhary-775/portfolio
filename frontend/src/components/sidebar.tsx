@@ -55,9 +55,9 @@ export const Sidebar = () => {
       ))}
       <div
         onClick={() => setOpen(!open)}
-        className={cn("absolute top-1 -right-12 m-2 h-7 w-7 cursor-pointer")}
+        className={cn("absolute top-[1px] -right-10 m-2 h-7 w-7 cursor-pointer")}
       >
-        <SideBarToggle className={cn("m-2 h-7 w-7")} />
+        <SideBarToggle open={open} className={cn("m-2 h-7 w-7")} />
       </div>
     </motion.div>
   );
