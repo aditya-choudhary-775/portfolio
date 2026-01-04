@@ -19,7 +19,7 @@ export const ControlRoom = () => {
           <span className="font-architects-daughter text-8xl">5</span>
           <div className="flex items-center justify-center gap-2">
             <IconCodeCircleFilled className="z-5 size-8" />
-            <span>Projects Shipped</span>
+            <span className="font-bold">Projects Shipped</span>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@ export const ControlRoom = () => {
           <span className="font-architects-daughter text-8xl">8</span>
           <div className="flex items-center justify-center gap-2">
             <IconBrandYoutubeFilled className="z-5 size-8" />
-            <span>Videos Published</span>
+            <span className="font-bold">Videos Published</span>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ export const ControlRoom = () => {
           <span className="font-architects-daughter text-8xl">12</span>
           <div className="flex items-center justify-center gap-2">
             <IconBrandInstagramFilled className="z-5 size-8" />
-            <span>Reels Published</span>
+            <span className="font-bold">Reels Published</span>
           </div>
         </div>
       </div>
