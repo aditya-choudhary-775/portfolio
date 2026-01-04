@@ -62,6 +62,7 @@ export const ControlRoom = () => {
               rotateX: 0,
               rotateY: 0,
               rotateZ: 0,
+              boxShadow: "0px 0px 0px black"
             }}
             transition={{
               duration: 0.3,
@@ -71,6 +72,7 @@ export const ControlRoom = () => {
               "flex h-full w-full scale-94 flex-col items-center border justify-center gap-3 rounded-md bg-white z-5 translate-z-22",
               "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
               "bg-size-[10px_10px]",
+              "shadow-[0px_20px_50px_black]",
             )}
           >
             <Image
