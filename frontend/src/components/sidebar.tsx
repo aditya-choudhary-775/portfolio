@@ -25,13 +25,13 @@ type SidebarItem = {
 const sidebarItems: SidebarItem[] = [
   {
     label: "Control Room",
-    imageSrc: "/overview-2.png",
+    imageSrc: "/overview-2.svg",
     imageAlt: "Control Room",
     className: "mt-8"
   },
-  { label: "Projects", imageSrc: "/projects.png", imageAlt: "Projects" },
-  { label: "Skills", imageSrc: "/skills.png", imageAlt: "Skills" },
-  { label: "Timeline", imageSrc: "/timeline.png", imageAlt: "Timeline" },
+  { label: "Projects", imageSrc: "/projects.svg", imageAlt: "Projects" },
+  { label: "Skills", imageSrc: "/skills.svg", imageAlt: "Skills" },
+  { label: "Timeline", imageSrc: "/timeline.svg", imageAlt: "Timeline" },
   { label: "What I Think", icon: IconQuestionMark },
   { label: "Let's Talk", icon: IconMoodWink2 },
 ];
