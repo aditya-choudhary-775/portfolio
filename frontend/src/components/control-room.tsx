@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { cn } from "@/lib/utils";
 import {
   IconBrandInstagramFilled,
@@ -10,6 +10,7 @@ import React from "react";
 import { Instagram, YouTube } from "./icons";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { Badge } from "./badge";
 
 export const ControlRoom = () => {
   return (
@@ -45,55 +46,85 @@ export const ControlRoom = () => {
       </div>
 
       <div className="col-span-3 row-span-3 h-full w-full p-3">
-        <div className="h-full w-full rounded-md border"></div>
+        <div className="flex h-full w-full flex-col items-center justify-center gap-3 rounded-md border">
+          <Image
+            src="/avatar1.png"
+            height={50}
+            width={50}
+            alt="Avatar"
+            className="z-5 size-20 rounded-full border border-black bg-white"
+          />
+          <span className="text-xl font-bold">Aditya Choudhary</span>
+          <div className="flex flex-col items-start justify-between gap-3 mt-2">
+            <div className="flex items-center justify-between gap-3">
+              <Badge text="Builder" />
+              <Badge text="Creator" />
+            </div>
+            <Badge text="Learning In Public" />
+          </div>
+        </div>
       </div>
 
       <div className="col-span-3 row-span-4 h-full w-full p-3">
-        <div className="flex h-full w-full flex-col gap-5 items-center justify-center rounded-md border perspective-distant transform-3d">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-md border perspective-distant transform-3d">
           <motion.button
-          initial={{
-            rotateX: 35,
-            rotateY: 20,
-            boxShadow: "0px 20px 50px var(--color-red-400)",
-          }}
-          whileTap={{
-            y: 0,
-          }}
-          whileHover={{
-            rotateX: 0,
-            rotateY: 0,
-            boxShadow: "0px 20px 50px var(--color-red-600)",
-            y: -5,
-          }}
-          transition={{
-            duration: 0.3,
-            ease: "easeInOut",
-          }}
-          className={cn("cursor-pointer rounded-xl border border-neutral-100 bg-white p-4", "shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)_inset,0px_-1px_2px_0px_rgba(0,0,0,0.1)_inset] translate-z-96")}>
+            initial={{
+              rotateX: 35,
+              rotateY: 20,
+              boxShadow: "0px 20px 50px var(--color-red-400)",
+            }}
+            whileTap={{
+              y: 0,
+            }}
+            whileHover={{
+              rotateX: 0,
+              rotateY: 0,
+              boxShadow: "0px 20px 50px var(--color-red-600)",
+              y: -5,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeInOut",
+            }}
+            className={cn(
+              "cursor-pointer rounded-xl border border-neutral-100 bg-white p-4",
+              "translate-z-96 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)_inset,0px_-1px_2px_0px_rgba(0,0,0,0.1)_inset]",
+            )}
+          >
             <YouTube className={cn("h-10")} />
           </motion.button>
 
           <motion.button
-          initial={{
-            rotateX: 40,
-            rotateY: 20,
-            boxShadow: "0px 20px 50px var(--color-purple-400)",
-          }}
-          whileTap={{
-            y: 0,
-          }}
-          whileHover={{
-            rotateX: 0,
-            rotateY: 0,
-            boxShadow: "0px 20px 50px var(--color-purple-600)",
-            y: -5,
-          }}
-          transition={{
-            duration: 0.3,
-            ease: "easeInOut",
-          }}
-          className={cn("cursor-pointer rounded-xl border border-neutral-100 bg-white p-3", "shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)_inset,0px_-1px_2px_0px_rgba(0,0,0,0.1)_inset] translate-z-96")}>
-            <Image src="/instagram.png" height={24} width={24} alt="Instagram" className={cn("size-14 shrink-0")} />
+            initial={{
+              rotateX: 40,
+              rotateY: 20,
+              boxShadow: "0px 20px 50px var(--color-purple-400)",
+            }}
+            whileTap={{
+              y: 0,
+            }}
+            whileHover={{
+              rotateX: 0,
+              rotateY: 0,
+              boxShadow: "0px 20px 50px var(--color-purple-600)",
+              y: -5,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: "easeInOut",
+            }}
+            className={cn(
+              "cursor-pointer rounded-xl border border-neutral-100 bg-white p-3",
+              "translate-z-96 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.1)_inset,0px_-1px_2px_0px_rgba(0,0,0,0.1)_inset]",
+            )}
+          >
+            <Image
+              src="/instagram.png"
+              height={24}
+              width={24}
+              alt="Instagram"
+              className={cn("size-14 shrink-0")}
+            />
           </motion.button>
         </div>
       </div>
