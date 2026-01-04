@@ -114,7 +114,7 @@ const SidebarItemComponent = ({
             transition={{
               duration: open ? 0.35 : 0.2,
             }}
-            className={cn("flex-1 overflow-hidden px-2 whitespace-nowrap")}
+            className={cn("flex-1 overflow-hidden px-2 whitespace-nowrap font-bold")}
           >
             {item.label}
           </motion.span>

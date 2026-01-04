@@ -18,7 +18,6 @@ export default function Home() {
               "absolute h-full w-full",
               "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
               "bg-size-[10px_10px]",
-              // "mask-y-from-90% mask-x-from-50%",
             )}
           />
           <ControlRoom />
