@@ -9,35 +9,11 @@ export const ProfileCard = () => {
     <div className="col-span-3 row-span-3 h-full w-full p-3">
       <div
         className={cn(
-          "flex h-full w-full flex-col items-center justify-center gap-3 rounded-md bg-gray-900",
-          "perspective-distant transform-3d",
+          "flex h-full w-full flex-col items-center justify-center gap-3 border rounded-md bg-white",
           "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
           "bg-size-[10px_10px]",
         )}
       >
-        <motion.div
-          initial={{
-            rotateX: 23,
-            rotateY: -23,
-            rotateZ: 15,
-          }}
-          whileHover={{
-            rotateX: 0,
-            rotateY: 0,
-            rotateZ: 0,
-            boxShadow: "0px 0px 0px black",
-          }}
-          transition={{
-            duration: 0.3,
-            ease: "easeInOut",
-          }}
-          className={cn(
-            "z-5 flex h-full w-full translate-z-22 scale-94 flex-col items-center justify-center gap-3 rounded-md border bg-white",
-            "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
-            "bg-size-[10px_10px]",
-            "shadow-[0px_20px_50px_black]",
-          )}
-        >
           <Image
             src="/avatar1.png"
             height={50}
@@ -53,7 +29,6 @@ export const ProfileCard = () => {
             </div>
             <Badge text="Learning In Public" />
           </div>
-        </motion.div>
       </div>
     </div>
   );
