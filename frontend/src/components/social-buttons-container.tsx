@@ -3,10 +3,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { SocialButton } from "./social-button";
 import { YouTube } from "./icons";
+import { GridItem } from "./grid-item";
 
 export const SocialButtonsContainer = () => {
   return (
-    <div className="col-span-3 row-span-4 h-full w-full p-3">
+    <GridItem colSpan="col-span-3" rowSpan="row-span-4">
       <div className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-md border perspective-distant transform-3d">
         <SocialButton
           icon={<YouTube className={cn("h-10")} />}
@@ -29,6 +30,6 @@ export const SocialButtonsContainer = () => {
           initialRotateX={40}
         />
       </div>
-    </div>
+    </GridItem>
   );
 };

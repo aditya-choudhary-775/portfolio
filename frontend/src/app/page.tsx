@@ -1,11 +1,7 @@
 import { Sidebar } from "@/components/sidebar";
 import { cn } from "@/lib/utils";
+import { getBackgroundPattern } from "@/lib/constants";
 import { ControlRoom } from "@/components/control-room";
-import {
-  IconLayoutSidebarLeftCollapse,
-  IconLayoutSidebarLeftExpand,
-} from "@tabler/icons-react";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -16,8 +12,7 @@ export default function Home() {
           <div
             className={cn(
               "pointer-events-none absolute -z-10 h-full w-full",
-              "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
-              "bg-size-[10px_10px]",
+              ...getBackgroundPattern()
             )}
           />
           <ControlRoom />

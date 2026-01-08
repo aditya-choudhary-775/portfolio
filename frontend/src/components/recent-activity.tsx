@@ -4,9 +4,6 @@ import {
   IconBrandYoutube,
   IconClockCheck,
 } from "@tabler/icons-react";
-import { div } from "motion/react-client";
-import React from "react";
-import { YouTube } from "./icons";
 
 export const RecentActivity = () => {
   const recentActivities = [
@@ -160,7 +157,7 @@ export const RecentActivity = () => {
         )}
       >
         <IconClockCheck className="text-green-600" />
-        <span>Recent Activity</span>
+        <span className="font-mono">Recent Activity</span>
       </div>
 
       <div
@@ -174,12 +171,12 @@ export const RecentActivity = () => {
             className={cn("flex items-center gap-3 rounded-md border p-2")}
           >
             <div className="size-2 shrink-0 rounded-full border bg-green-300" />
-            <span className="flex-1 text-sm">{activity.title}</span>
+            <span className="flex-1 text-sm font-mono">{activity.title}</span>
             {activity.youtube && (
-              <IconBrandYoutube className="cursor-pointer text-red-500 hover:scale-125 transition-all duration-200" />
+              <IconBrandYoutube className="cursor-pointer text-red-500 transition-all duration-200 hover:scale-125" />
             )}
             {activity.instagram && (
-              <IconBrandInstagram className="cursor-pointer text-pink-400 hover:scale-125 duration-200" />
+              <IconBrandInstagram className="cursor-pointer text-pink-400 duration-200 hover:scale-125" />
             )}
             <span className="text-xs text-gray-500">{activity.timestamp}</span>
           </div>

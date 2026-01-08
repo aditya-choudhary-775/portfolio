@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
-import { div } from "motion/react-client";
+import { getBackgroundPattern } from "@/lib/constants";
 import { ReactNode } from "react";
 import { motion } from "motion/react";
+import { GridItem } from "./grid-item";
 
 interface StatCardProps {
   value: string;
@@ -19,13 +20,12 @@ export const StatCard = ({
   rowSpan = "row-span-2",
 }: StatCardProps) => {
   return (
-    <div className={cn(colSpan, rowSpan, "h-full w-full p-3")}>
+    <GridItem colSpan={colSpan} rowSpan={rowSpan}>
       <div
         className={cn(
           "flex h-full w-full flex-col items-center justify-center rounded-md bg-gray-900",
           "perspective-distant transform-3d",
-          "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
-          "bg-size-[10px_10px]",
+          ...getBackgroundPattern()
         )}
       >
         <motion.div
@@ -49,17 +49,16 @@ export const StatCard = ({
           }}
           className={cn(
             "flex h-full w-full translate-z-22 flex-col items-center justify-center rounded-md border bg-white",
-            "bg-[radial-gradient(var(--color-gray-300),_transparent_1px)]",
-            "bg-size-[10px_10px]",
+            ...getBackgroundPattern()
           )}
         >
           <span className="font-architects-daughter text-8xl">{value}</span>
           <div className="flex items-center justify-center gap-2">
             <div className="z-5 size-8">{icon}</div>
-            <span className="font-bold">{label}</span>
+            <span className="font-bold font-">{label}</span>
           </div>
         </motion.div>
       </div>
-    </div>
+    </GridItem>
   );
 };
