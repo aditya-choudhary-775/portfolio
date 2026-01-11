@@ -12,6 +12,7 @@ import { StatCard } from "./stat-card";
 import { RecentActivity } from "./recent-activity";
 import { InProgress } from "./in-progress";
 import { GridItem } from "./grid-item";
+import { getBackgroundPattern } from "@/lib/constants";
 
 export const ControlRoom = () => {
   const inProgressItems = [
@@ -57,7 +58,7 @@ export const ControlRoom = () => {
       <SocialButtonsContainer />
 
       <GridItem colSpan="col-span-6" rowSpan="row-span-4">
-        <div className="flex h-full w-full flex-col items-center gap-2 rounded-md border">
+        <div className={cn("flex h-full w-full flex-col bg-gray-100 items-center gap-2 rounded-md border", ...getBackgroundPattern())}>
           <RecentActivity />
         </div>
       </GridItem>

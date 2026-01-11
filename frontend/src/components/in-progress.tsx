@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import Loader from "./loader";
+import { getBackgroundPattern } from "@/lib/constants";
 
 interface InProgressItem {
   icon: ReactNode;
@@ -26,8 +27,8 @@ export const InProgress = ({
   return (
     <div
       className={cn(
-        "flex h-full w-full flex-col items-center rounded-md border px-3 gap-4",
-        className
+        "flex h-full w-full flex-col items-center bg-gray-100 rounded-md border px-3 gap-4",
+        className, ...getBackgroundPattern()
       )}
     >
       <div className="flex items-end justify-center gap-3 mb-4 mt-8">

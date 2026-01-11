@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
-import { Architects_Daughter, Geist, Geist_Mono, Rubik_Doodle_Shadow, Rubik_Wet_Paint, Fredericka_the_Great } from "next/font/google";
+import {
+  Architects_Daughter,
+  Fredericka_the_Great,
+  Geist,
+  Geist_Mono,
+  Rubik_Doodle_Shadow,
+  Rubik_Wet_Paint,
+} from "next/font/google";
 import "./globals.css";
+import { LayoutWithSidebar } from "./layout-with-sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,7 +61,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${architectsDaughter.variable} ${rubikDoodleShadow.variable} ${rubikWetPaint.variable} ${frederickaTheGreat.variable} antialiased`}
       >
-        {children}
+        <LayoutWithSidebar>{children}</LayoutWithSidebar>
       </body>
     </html>
   );

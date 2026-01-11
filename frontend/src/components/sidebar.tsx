@@ -7,6 +7,8 @@ import {
   IconQuestionMark,
 } from "@tabler/icons-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { SidebarToggle } from "./icons";
@@ -16,6 +18,7 @@ const EXPANDED = 210;
 
 type SidebarItem = {
   label: string;
+  href: string;
   icon?: React.ComponentType<{ className?: string }>;
   imageSrc?: string;
   imageAlt?: string;
@@ -24,20 +27,37 @@ type SidebarItem = {
 
 const sidebarItems: SidebarItem[] = [
   {
-    label: "Control Room",
+    label: "Control Panel",
+    href: "/",
     imageSrc: "/overview-2.svg",
     imageAlt: "Control Room",
-    className: "mt-8"
+    className: "mt-8",
   },
-  { label: "Projects", imageSrc: "/projects.svg", imageAlt: "Projects" },
-  { label: "Skills", imageSrc: "/skills.svg", imageAlt: "Skills" },
-  { label: "Timeline", imageSrc: "/timeline.svg", imageAlt: "Timeline" },
-  { label: "What I Think", icon: IconQuestionMark },
-  { label: "Let's Talk", icon: IconMoodWink2 },
+  {
+    label: "Projects",
+    href: "/projects",
+    imageSrc: "/projects.svg",
+    imageAlt: "Projects",
+  },
+  {
+    label: "Skills",
+    href: "/skills",
+    imageSrc: "/skills.svg",
+    imageAlt: "Skills",
+  },
+  {
+    label: "Timeline",
+    href: "/timeline",
+    imageSrc: "/timeline.svg",
+    imageAlt: "Timeline",
+  },
+  { label: "Brain Dump", href: "/what-i-think", icon: IconQuestionMark },
+  { label: "Say Hi", href: "/lets-talk", icon: IconMoodWink2 },
 ];
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(true);
+  const pathname = usePathname();
 
   return (
     <motion.div
@@ -53,7 +73,13 @@ export const Sidebar = () => {
       )}
     >
       {sidebarItems.map((item, index) => (
-        <SidebarItemComponent className={item.className || ""} open={open} key={index} item={item} />
+        <SidebarItemComponent
+          className={item.className || ""}
+          open={open}
+          key={index}
+          item={item}
+          isActive={pathname === item.href}
+        />
       ))}
 
       <div
@@ -70,15 +96,22 @@ const SidebarItemComponent = ({
   item,
   open,
   className,
+  isActive,
 }: {
   item: SidebarItem;
   open: Boolean;
   className?: string;
+  isActive?: boolean;
 }) => {
   return (
-    <div
+    <Link
+      href={item.href}
       className={cn(
-        "flex cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 p-2 transition-shadow duration-200 hover:bg-gray-100 hover:shadow-xl", className
+        "flex cursor-pointer items-center gap-1 rounded-xl border p-2 transition-all duration-200 hover:bg-gray-100 hover:shadow-xl",
+        isActive
+          ? "border-green-500 bg-green-50 hover:bg-green-100"
+          : "border-neutral-200",
+        className,
       )}
     >
       {item.imageSrc ? (
@@ -114,12 +147,15 @@ const SidebarItemComponent = ({
             transition={{
               duration: open ? 0.35 : 0.2,
             }}
-            className={cn("flex-1 overflow-hidden px-2 whitespace-nowrap font-medium")}
+            className={cn(
+              "flex-1 overflow-hidden px-2 font-medium whitespace-nowrap transition-all duration-300",
+              isActive && "text-green-700",
+            )}
           >
             {item.label}
           </motion.span>
         )}
       </AnimatePresence>
-    </div>
+    </Link>
   );
 };

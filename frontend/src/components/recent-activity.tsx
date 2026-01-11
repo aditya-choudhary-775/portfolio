@@ -1,3 +1,4 @@
+import { getBackgroundPattern } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import {
   IconBrandInstagram,
@@ -153,25 +154,25 @@ export const RecentActivity = () => {
     <>
       <div
         className={cn(
-          "mt-3 flex items-center gap-3 rounded-md border p-2 text-xl font-bold",
+          "mt-3 bg-white flex items-center gap-3 rounded-md border p-2 text-xl font-bold", getBackgroundPattern()
         )}
       >
         <IconClockCheck className="text-green-600" />
-        <span className="font-mono">Recent Activity</span>
+        <span className="font-mono">Activity Feed</span>
       </div>
 
       <div
         className={cn(
-          "no-scrollbar mt-[6px] mb-3 flex w-full flex-1 flex-col gap-2 overflow-y-scroll mask-b-from-40% px-3",
+          "no-scrollbar mt-[6px] mb-3 flex w-full flex-1 flex-col gap-2 overflow-y-scroll mask-b-from-40% px-3"
         )}
       >
         {recentActivities.map((activity, index) => (
           <div
             key={index}
-            className={cn("flex items-center gap-3 rounded-md border p-2")}
+            className={cn("flex items-center gap-3 rounded-md border bg-white p-2", ...getBackgroundPattern())}
           >
             <div className="size-2 shrink-0 rounded-full border bg-green-300" />
-            <span className="flex-1 text-sm font-mono">{activity.title}</span>
+            <span className="flex-1 text-sm font-mono tracking-tighter">{activity.title}</span>
             {activity.youtube && (
               <IconBrandYoutube className="cursor-pointer text-red-500 transition-all duration-200 hover:scale-125" />
             )}

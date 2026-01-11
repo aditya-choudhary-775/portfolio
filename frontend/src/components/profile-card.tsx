@@ -10,7 +10,7 @@ export const ProfileCard = () => {
     <GridItem colSpan="col-span-3" rowSpan="row-span-3">
       <div
         className={cn(
-          "flex h-full w-full flex-col items-center justify-center gap-3 border rounded-md bg-white",
+          "flex h-full w-full flex-col items-center justify-center gap-3 border rounded-md bg-gray-100",
           ...getBackgroundPattern()
         )}
       >
@@ -19,15 +19,15 @@ export const ProfileCard = () => {
           height={50}
           width={50}
           alt="Avatar"
-          className="z-5 size-20 rounded-full border border-black bg-white"
+          className="z-5 size-20 rounded-full border border-black bg-cyan-50"
         />
         <span className="text-xl font-bold font-serif">Aditya Choudhary</span>
         <div className="mt-2 flex flex-col items-start justify-between gap-3">
           <div className="flex items-center justify-between gap-3">
-            <Badge text="Builder" />
-            <Badge text="Creator" />
+            <Badge color="green" text="Builder" />
+            <Badge color="green" text="Creator" />
           </div>
-          <Badge text="Learning In Public" />
+          <Badge color="green" text="Learning In Public" />
         </div>
       </div>
     </GridItem>

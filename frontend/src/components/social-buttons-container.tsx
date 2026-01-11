@@ -4,11 +4,12 @@ import Image from "next/image";
 import { SocialButton } from "./social-button";
 import { YouTube } from "./icons";
 import { GridItem } from "./grid-item";
+import { getBackgroundPattern } from "@/lib/constants";
 
 export const SocialButtonsContainer = () => {
   return (
     <GridItem colSpan="col-span-3" rowSpan="row-span-4">
-      <div className="flex h-full w-full flex-col items-center justify-center gap-5 rounded-md border perspective-distant transform-3d">
+      <div className={cn("flex h-full w-full bg-gray-100 flex-col items-center justify-center gap-5 rounded-md border perspective-distant transform-3d", ...getBackgroundPattern())}>
         <SocialButton
           icon={<YouTube className={cn("h-10")} />}
           hoverShadowColor="var(--color-red-600)"
