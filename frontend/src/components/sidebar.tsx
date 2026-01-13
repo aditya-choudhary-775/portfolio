@@ -107,23 +107,31 @@ const SidebarItemComponent = ({
     <Link
       href={item.href}
       className={cn(
-        "flex cursor-pointer items-center gap-1 rounded-xl border p-2 transition-all duration-200 hover:bg-gray-100 hover:shadow-xl",
-        isActive
-          ? "border-green-500 bg-green-50 hover:bg-green-100"
-          : "border-neutral-200",
+        "relative flex cursor-pointer items-center gap-1 rounded-xl border border-neutral-200 p-2 transition-all duration-200 hover:bg-cyan-50 hover:text-cyan-700", !isActive && "hover:border-cyan-500",
         className,
       )}
     >
+      {isActive && (
+        <motion.a
+          layoutId="nav-item"
+          transition={{
+            duration: 0.2,
+            ease: "easeInOut",
+          }}
+          href={item.href}
+          className="absolute inset-0 m-auto h-full w-full rounded-xl border border-green-500 bg-green-50"
+        ></motion.a>
+      )}
       {item.imageSrc ? (
         <Image
           src={item.imageSrc}
           alt={item.imageAlt || item.label}
           width={50}
           height={50}
-          className="h-10 w-10 shrink-0"
+          className="h-10 w-10 shrink-0 z-1"
         />
       ) : (
-        item.icon && <item.icon className="h-10 w-10 shrink-0" />
+        item.icon && <item.icon className="h-10 w-10 shrink-0 z-1 text-black" />
       )}
 
       <AnimatePresence>

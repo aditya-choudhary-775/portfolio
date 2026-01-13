@@ -1,3 +1,4 @@
+"use client";
 import {
   IconArrowNarrowRight,
   IconBrandGithub,
@@ -11,8 +12,9 @@ import {
   IconWorldWww,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Badge } from "./badge";
+import { motion } from "motion/react";
 
 // Types
 const statusBadges = {
@@ -45,28 +47,32 @@ interface ProjectLink {
 }
 
 interface Project {
+  id: string;
   title: string;
   description: string;
   status: StatusKey;
-  statusSize: string;
-  statusClassName?: string,
   technologies: TechnologyIcon[];
   links: ProjectLink;
-  height: string;
-  padding: string;
-  titleSize: string;
-  titleMarginY: string;
-  descriptionSize: string;
-  technologyLabelSize: string;
-  iconSize: string;
-  viewDetailsSize: string;
-  gapSize: string;
-  linksGap: string;
 }
 
 // Components
-const Status = ({ status, size, className }: { status: StatusKey; size: string, className?: string }) => {
-  return <Badge size={size} color={statusBadges[status]} text={status} className={className} />;
+const Status = ({
+  status,
+  size,
+  className,
+}: {
+  status: StatusKey;
+  size: string;
+  className?: string;
+}) => {
+  return (
+    <Badge
+      size={size}
+      color={statusBadges[status]}
+      text={status}
+      className={className}
+    />
+  );
 };
 
 const TechnologyIcons = ({
@@ -137,29 +143,75 @@ interface ProjectCardProps {
   project: Project;
 }
 
-const ProjectCard = ({ project }: ProjectCardProps) => {
-  const {
-    title,
-    description,
-    status,
-    statusSize,
-    statusClassName,
-    technologies,
-    links,
-    height,
-    padding,
-    titleSize,
-    titleMarginY,
-    descriptionSize,
-    technologyLabelSize,
-    iconSize,
-    viewDetailsSize,
-    gapSize,
-    linksGap,
-  } = project;
+const ProjectCard = ({
+  project,
+  idArray,
+  goNext,
+  goPrev,
+}: ProjectCardProps & {
+  idArray: string[];
+  goNext: () => void;
+  goPrev: () => void;
+}) => {
+  const { id, title, description, status, technologies, links } = project;
+
+  const statusSize = "4px";
+  const statusClassName = "px-1 gap-1";
+  const height = "h-[290px]";
+  const padding = "p-2";
+  const titleSize = "text-sm";
+  const titleMarginY = "my-1";
+  const descriptionSize = "text-xs";
+  const technologyLabelSize = "text-[10px]";
+  const iconSize = "size-4";
+  const viewDetailsSize = "size-4";
+  const gapSize = "gap-1";
+  const linksGap = "gap-2";
+
+  const slotVariants = {
+    left: {
+      x: -35,
+      scale: 1,
+      opacity: 1,
+      zIndex: 1,
+    },
+    center: {
+      x: 0,
+      scale: 1.25,
+      opacity: 1,
+      zIndex: 3,
+    },
+    right: {
+      x: 35,
+      scale: 1,
+      opacity: 1,
+      zIndex: 1,
+    },
+  };
+
+  let role: "left" | "center" | "right";
+
+  if (project.id === idArray[0]) role = "left";
+  else if (project.id === idArray[1]) role = "center";
+  else if (project.id === idArray[2]) role = "right";
+  else return null;
 
   return (
-    <div
+    <motion.div
+      drag="x"
+      dragConstraints={{
+        left: 0,
+        right: 0,
+      }}
+      onDragEnd={(_, info) => {
+        if (info.offset.x < -120) goNext();
+        if (info.offset.x > 120) goPrev();
+      }}
+      layoutId={`card-${id}`}
+      animate={slotVariants[role]}
+      transition={{
+        duration: 0.6,
+      }}
       className={`flex aspect-13/14 ${height} flex-col rounded-md border ${padding} backdrop-blur-[1px]`}
     >
       <div className="h-[50%] rounded-md border" />
@@ -167,7 +219,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <div className={`flex items-center ${titleMarginY} ${gapSize} p-1`}>
         <span className={`${titleSize} font-bold`}>{title}</span>
         <div className="flex flex-1 items-center justify-start">
-          <Status size={statusSize} status={status} className={statusClassName} />
+          <Status
+            size={statusSize}
+            status={status}
+            className={statusClassName}
+          />
         </div>
         <ProjectLinks links={links} iconSize={iconSize} linksGap={linksGap} />
       </div>
@@ -187,7 +243,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -204,88 +260,113 @@ const allTechnologies: TechnologyIcon[] = [
 
 const projects: Project[] = [
   {
+    id: "0",
     title: "Creator OS",
     description:
       "An all-in-one workspace for YouTubers to plan, publish, and track their content",
     status: "Evolving",
-    statusSize: "4px",
-    statusClassName: "px-1 gap-1",
     technologies: allTechnologies,
     links: {
       website: "#",
       github: "#",
       details: "#",
     },
-    height: "h-[290px]",
-    padding: "p-2",
-    titleSize: "text-sm",
-    titleMarginY: "my-1",
-    descriptionSize: "text-xs",
-    technologyLabelSize: "text-[10px]",
-    iconSize: "size-4",
-    viewDetailsSize: "size-4",
-    gapSize: "gap-1",
-    linksGap: "gap-2",
   },
   {
+    id: "1",
     title: "Portfolio V2",
     description:
       "A personal system for tracking my growth, and everything I do",
     status: "In Progress",
-    statusSize: "6px",
     technologies: allTechnologies,
     links: {
       website: "#",
       github: "#",
       details: "#",
     },
-    height: "h-[380px]",
-    padding: "p-3",
-    titleSize: "text-xl",
-    titleMarginY: "my-2",
-    descriptionSize: "text-sm",
-    technologyLabelSize: "text-xs",
-    iconSize: "size-5",
-    viewDetailsSize: "size-5",
-    gapSize: "gap-2",
-    linksGap: "gap-3",
   },
   {
+    id: "2",
     title: "Video Idea Bank",
     description:
       "A simple tool to capture, organize, and rate YouTube video ideas",
     status: "Rebuilding",
-    statusSize: "4px",
-    statusClassName: "px-1 gap-1",
     technologies: allTechnologies,
     links: {
       website: "#",
       github: "#",
       details: "#",
     },
-    height: "h-[290px]",
-    padding: "p-2",
-    titleSize: "text-sm",
-    titleMarginY: "my-1",
-    descriptionSize: "text-xs",
-    technologyLabelSize: "text-[10px]",
-    iconSize: "size-4",
-    viewDetailsSize: "size-4",
-    gapSize: "gap-1",
-    linksGap: "gap-2",
   },
 ];
 
 // Main Component
 export const TopBuilds = () => {
+  const [activeIndex, setActiveIndex] = useState(1);
+  const total = projects.length;
+
+  const center = projects[activeIndex];
+  const left = projects[(activeIndex - 1 + total) % total];
+  const right = projects[(activeIndex + 1) % total];
+
+  const projectsDisplay = [left, center, right];
+
+  const [locked, setLocked] = useState(false);
+
+  const goNext = () => {
+    if (locked) return;
+    setLocked(true);
+    setActiveIndex((i) => (i + 1) % total);
+    setTimeout(() => setLocked(false), 700);
+  };
+
+  const goPrev = () => {
+    if (locked) return;
+    setLocked(true);
+    setActiveIndex((i) => (i - 1 + total) % total);
+    setTimeout(() => setLocked(false), 700);
+  };
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+
+    if (locked) return;
+
+    if (e.deltaX > 40) goNext();
+    if (e.deltaX < -40) goPrev();
+  };
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   return (
-    <>
-      <h1 className="my-2 text-center text-3xl font-bold">Top Builds</h1>
+    <div
+      onWheel={handleWheel}
+      className="mt-5 flex flex-col items-center gap-16"
+    >
+      <h1 className="my-2 cursor-pointer touch-pan-x touch-pan-y overscroll-contain text-center text-3xl font-bold">
+        Top Builds
+      </h1>
       <div className="mt-6 flex items-center justify-center gap-3">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
-        ))}
+        {projectsDisplay.map((project) => {
+          return (
+            <ProjectCard
+              idArray={[left.id, center.id, right.id]}
+              project={project}
+              key={project.id}
+              goNext={goNext}
+              goPrev={goPrev}
+            />
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 };

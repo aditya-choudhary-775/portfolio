@@ -57,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" >
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${architectsDaughter.variable} ${rubikDoodleShadow.variable} ${rubikWetPaint.variable} ${frederickaTheGreat.variable} antialiased`}
       >
